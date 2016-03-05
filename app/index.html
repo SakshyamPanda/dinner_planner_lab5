@@ -10,6 +10,8 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
     <!-- jQuery -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
@@ -30,10 +32,24 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
   <body>
     <!-- Here in index.html you should put only the layout that is shared among all the screens (e.g. header
     ,footer, etc.). The rest of the view specific layout will go into the html partials (check partials folder) -->
+	
+	<div class="container-fluid" ng-app="dinnerPlanner">
+		<div class="row">
+			<div class="headersection col-md-12">
+				<h1>HOMELETTE <small style="color: darkgoldenrod;">  From the best chefs in the world directly into your kitchen</small></h1> 
+			</div>
 
     <!-- ng-view Angular directive is where the partials will be loaded. app.js configures the $routingProvider
     where you specify which partial should be loaded when. -->
-    <div ng-view></div>
+			
+			<div ng-view></div>
+				
+			<!-- <div class="footer col-md-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+            </div>	-->
+		
+		</div> <!-- end of class row> -->
+	</div> <!-- end of class container-fluid> -->
 
   </body>
 </html>
