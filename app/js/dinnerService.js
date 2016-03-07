@@ -7,6 +7,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   
   var numberOfGuests = 2;
   var menu = [];
+  var pendingDish = {};
 
 
   this.setNumberOfGuests = function(num) {
@@ -21,7 +22,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.getNumberOfGuests = function() {
     return numberOfGuests;
   }
-
 
   // TODO in Lab 5: Add your model code from previous labs
   // feel free to remove above example code
