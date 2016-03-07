@@ -49,9 +49,9 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
   this.removeDishFromMenu = function(dish) {
     for (key in menu){
-      var dish = menu[key];
+      var existedDish = menu[key];
 
-      if(dish.RecipeID == id){
+      if(existedDish.RecipeID == dish.RecipeID){
         menu.splice(key, 1);
         break;
       }
