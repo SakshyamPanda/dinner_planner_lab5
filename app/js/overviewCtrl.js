@@ -3,9 +3,7 @@ dinnerPlannerApp.controller('OverviewCtrl', function ($scope, $location, Dinner)
 	    $location.path( path );
 	};
 
-	$scope.menu = function() {
-       return Dinner.getDinnerMenu();
-    }
+	$scope.menu =  Dinner.getDinnerMenu();
 
     $scope.getDishTotalPrice = function(dish) {
 		return Dinner.getDishTotalPrice(dish);
