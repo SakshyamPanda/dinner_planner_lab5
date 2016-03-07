@@ -3,3 +3,36 @@
 
 <!-- VIEW 6 --- TODO in Lab 5: Display the dish information including image, Description, 
 Instructions, Ingredients and total cost. -->
+
+<div class="col-md-6 col-sm-6">
+	<h3>{{dish.Title}}</h3> </br>
+	<div class="thumbnail"> 
+		<img class="img-responsive" ng-src="{{dish.ImageURL}}"/>
+	</div>
+</div>
+<div class="col-md-6 col-sm-6">
+	<div class="table-responsive">
+		<h3> Ingredients </h3>
+		<table class="table table-condensed">
+			<tr>
+				<th>#</th>
+				<th>Ingredient</th>
+				<th>Quantity required for {{getNumberOfGuests()}}</th>
+				<th>Unit</th>
+			</tr>
+			<tr ng-repeat="indg in dish.Ingredients">
+				<td>{{$index + 1}}</td>
+				<td>{{indg.Name}}</td>
+				<td>{{indg.Quantity * getNumberOfGuests()}}</td>
+				<td>{{indg.Unit}}</td>
+			</tr>
+			<tr>
+				<td class="col-md-offset-4"> Price </td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="col-md-12">
+	<div><h3>Description</h3></br>{{dish.Instructions}}</div>
+</div>
