@@ -29,6 +29,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   // a bit to take the advantage of Angular resource service
   // check lab 5 instructions for details
   this.getDinnerMenu = function() {
+    console.log("getDinnerMenu: "+menu);
     return menu;
   }
 
