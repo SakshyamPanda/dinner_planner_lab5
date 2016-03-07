@@ -5,7 +5,7 @@
 // the next time.
 dinnerPlannerApp.factory('Dinner',function ($resource) {
   
-  var numberOfGuest = 2;
+  var numberOfGuests = 2;
   var menu = [];
 
 
@@ -19,7 +19,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   }
 
   this.getNumberOfGuests = function() {
-    return numberOfGuest;
+    return numberOfGuests;
   }
 
 
@@ -77,7 +77,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   }
 
   this.getDishTotalPrice = function (dish) {
-    //console.log("getDishTotalPrice id: "+dish.id);
+    // console.log("getDishTotalPrice id: "+dish.RecipeID);
     var dishTotalPrice = 0; 
 
     if(dish){
@@ -86,8 +86,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
         console.log("allIngredients: "+allIngredients);
 
         for(key in allIngredients){
-          // console.log("ingredient: "+allIngredients[key]);
-          // console.log("ingredient.Quantity: "+allIngredients[key].Quantity);
+          console.log("ingredient: "+allIngredients[key]);
+          console.log("ingredient.Quantity: "+allIngredients[key].Quantity);
           dishTotalPrice += Number(allIngredients[key].Quantity)* 1 * numberOfGuests;
           console.log("dishTotalPrice: "+dishTotalPrice);
         }
