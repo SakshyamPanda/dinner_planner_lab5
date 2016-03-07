@@ -61,6 +61,18 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     }
   }
 
+  this.setPendingDish = function(dish){
+      console.log("setPendingDish");
+      console.log(dish);
+      pendingDish = dish;
+  }
+
+  this.getPendingDish = function(){
+    console.log("getPendingDish");
+    console.log(pendingDish);
+    return pendingDish;
+  }
+
   this.getTotalMenuPrice = function() {
     var totalMenuPrice = 0;
     //console.log("this.getTotalMenuPrice menu: "+ menu);

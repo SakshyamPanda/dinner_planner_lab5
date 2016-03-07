@@ -7,7 +7,7 @@
 					People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuests(numberOfGuests)"/>
 				</div>
 				<div>
-					Total number of guest: {{getNumberOfGuests()}}
+					Total number of guests: {{getNumberOfGuests()}}
 				</div>
 
 				<hr/>
@@ -28,11 +28,11 @@
 						</tr>
 						<tr>
 						  <td>Pending</td>
-						  <td>{{getDishTotalPrice(pendingDish)}} SEK</td>
+						  <td>{{getDishTotalPrice(pendingDish())}} SEK</td>
 						</tr>
 						<tr>
 						  <td>Total</td>
-						  <td>{{getTotalMenuPrice() + getDishTotalPrice(pendingDish)}} SEK</td>
+						  <td>{{getTotalMenuPrice() + getDishTotalPrice(pendingDish())}} SEK</td>
 						</tr>
 					</tbody>
 				</table>
