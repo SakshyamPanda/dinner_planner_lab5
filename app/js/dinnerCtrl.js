@@ -8,7 +8,11 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope, $location, Dinner) {
 
   $scope.numberOfGuests = Dinner.getNumberOfGuests();
 
-  $scope.menu =  Dinner.getDinnerMenu();
+  $scope.menu = Dinner.getDinnerMenu();
+
+  $scope.pendingDish = function(){
+    return Dinner.getPendingDish();
+  }
 
   $scope.setNumberOfGuests = function(number){
     Dinner.setNumberOfGuests(number);
