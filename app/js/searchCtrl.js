@@ -7,14 +7,17 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
   $scope.guest = Dinner.getNumberOfGuests();
   
   $scope.search = function(query) {
-   $scope.status = "Searching...";
-   Dinner.DishSearch.get({title_kw:query},function(data){
-     $scope.dishes=data.Results;
-	 console.log($scope.dishes);
-     $scope.status = "Showing " + data.Results.length + " results";
-   },function(data){
-     $scope.status = "There was an error";
-   });
- }
- 
+    $scope.status = "Searching...";
+
+    Dinner.DishSearch.get({title_kw:query},function(data){
+      $scope.dishes=data.Results;
+  	  console.log($scope.dishes);
+
+      $scope.status = "Showing " + data.Results.length + " results";
+
+      },function(data){
+           $scope.status = "There was an error";
+    });
+  }
+
 });

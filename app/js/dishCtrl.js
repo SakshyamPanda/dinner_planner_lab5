@@ -1,6 +1,6 @@
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
-dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
+dinnerPlannerApp.controller('DishCtrl', function ($scope, $routeParams, Dinner) {
   
   // TODO in Lab 5: you need to get the dish according to the routing parameter
   // $routingParams.paramName
@@ -10,15 +10,15 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 		return Dinner.getNumberOfGuests();
 	}
 
-		Dinner.Dish.get({id:$routeParams.dishId},function(data){
-			$scope.dish=data;
-			console.log($scope.dish);
-			
-		},function(data){
-		$scope.status = "There was an error";
-		});
+	Dinner.Dish.get( {id:$routeParams.dishId} ,function(data){
+		$scope.dish = data;
+		console.log($scope.dish);
 		
-					console.log("outside: "+$scope.dish);
+	},function(data){
+		$scope.status = "There was an error";
+	});
+		
+	console.log("outside: "+$scope.dish);
 
 
 });
