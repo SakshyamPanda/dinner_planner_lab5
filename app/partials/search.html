@@ -19,7 +19,7 @@
 						<div ng-repeat="dish in dishes" class="col-md-6">
 							<div class="thumbnail">
 								<h4> {{dish.Title}} </h4>
-								<img style="height:200px;" ng-src="{{dish.ImageURL}}"/>
+								<img class="img-responsive" style="height:200px;" ng-src="{{dish.ImageURL}}"/>
 								<a ng-href="#/dish/{{dish.RecipeID}}"> <h4 class="text-right">View Details </h4></a>
 								<!-- <span> {{dish.Category}} {{dish.Subcategory}} </span> -->
 							</div>
