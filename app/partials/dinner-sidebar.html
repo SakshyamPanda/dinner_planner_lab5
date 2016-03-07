@@ -1,9 +1,14 @@
 <div>
-	<p class="lead">My Dinner</p>
-	People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuests(numberOfGuests)"/>
-	Total number of guest: {{getNumberOfGuests()}}
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<p class="lead">My Dinner</p>
+				People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
+				Total number of guest: {{getNumberOfGuests()}}
+			</div>
+		</div>
+	</div>
 </div>
-
 <!-- TODO in Lab 5: Display the items on the menu with cost for each -->
 
 
