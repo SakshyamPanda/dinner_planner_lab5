@@ -18,7 +18,7 @@ var dinnerPlannerApp = angular.module('dinnerPlanner', ['ngRoute','ngResource'])
 // our screens. The paths that you use in the conditions of $routeProvider will be shown in the address
 // bar after the # sign. So, for instance, the home path will be 'http://localhost:8000/#/home'.
 //
-// In index.html you will notice the <div ng-view></div> tag. This is where the specific view sill be
+// In index.html you will notice the <div ng-view></div> tag. This is where the specific view will be
 // loaded. For instance when you go to http://localhost:8000/, since your path does not match any
 // of the when conditions, the otherwise condition is triggered and tells the app to redirect to '/home'.
 // The '/home' condition then loads the 'partials/home.html'. 
