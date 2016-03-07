@@ -8,11 +8,17 @@
 					<input ng-model="query"/>
 					<button ng-click="search(query)">Find</button><br/>
 					{{status}}
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div>
 					<h1> Dishes to be selected</h1>
 					<div>
 						<div ng-repeat="dish in dishes" class="col-md-6">
 							<div class="thumbnail">
-								<h3> {{dish.Title}} </h3>
+								<h4> {{dish.Title}} </h4>
 								<img style="height:200px;" ng-src="{{dish.ImageURL}}"/>
 								<a ng-href="#/dish/{{dish.RecipeID}}"> <h4 class="text-right">View Details </h4></a>
 								<!-- <span> {{dish.Category}} {{dish.Subcategory}} </span> -->
