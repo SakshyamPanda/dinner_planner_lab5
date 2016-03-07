@@ -3,8 +3,39 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<p class="lead">My Dinner</p>
-				People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuests(numberOfGuests)"/>
-				Total number of guest: {{getNumberOfGuests()}}
+				<div>
+					People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuests(numberOfGuests)"/>
+				</div>
+				<div>
+					Total number of guest: {{getNumberOfGuests()}}
+				</div>
+
+				<hr/>
+
+				<h4>Menu List</h4>
+					<table class="table">
+						<thead>
+							<tr>
+							  <th>Dish Name</th>
+							  <th>Cost</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="dish in menu">
+								<td>{{dish.Title}}</td>
+			    				<td>{{getDishTotalPrice(dish)}} SEK</td>
+								<td><span class=\"glyphicon glyphicon-remove removeDish\" id=""></td>
+							</tr>
+							<tr>
+							  <td>Pending</td>
+							  <td>0 SEK</td>
+							</tr>
+							<tr>
+							  <td>Total</td>
+							  <td>{{getTotalMenuPrice()}} SEK</td>
+							</tr>
+						</tbody>
+					</table>
 			</div>
 		</div>
 	</div>
