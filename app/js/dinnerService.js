@@ -6,8 +6,21 @@
 dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
   
   var numberOfGuests = 2;
-  var menu = [];
+  var menu = [];  // save the whole dish object
   var pendingDish = {};
+
+  // load the values from the cookie store the first time 
+  // you create the variables that store your number of guest and menu
+  var numberOfGuestsInCookie = $cookieStore.get('numberOfGuests');
+  
+  if(numberOfGuestsInCookie){
+      numberOfGuests = numberOfGuestsInCookie;
+  }else{
+      // do nothing
+  }
+  
+  var menuCookie = [];  // save dish id only
+
 
 
   this.setNumberOfGuests = function(num) {
@@ -23,14 +36,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
   }
 
   this.getNumberOfGuests = function() {
-    // Get from Cookie
-    var numberOfGuestsInCookie = $cookieStore.get('numberOfGuests');
-
-    if(numberOfGuestsInCookie){
-      return numberOfGuestsInCookie;
-    }else{
-      return numberOfGuests;
-    }
+    return numberOfGuests;
   }
 
   // TODO in Lab 5: Add your model code from previous labs
