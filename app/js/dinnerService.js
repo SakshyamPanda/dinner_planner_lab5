@@ -5,7 +5,7 @@
 // the next time.
 dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
   
-  var BIGOVEN_API_KEY = "r02x0R09O76JMCMc4nuM0PJXawUHpBUL";
+  var BIGOVEN_API_KEY = "0OV23011kU7B3VVVgxTTTIfdNXeTI3us";
 
   var numberOfGuests = 2;
   var menu = [];  // save the whole dish object
@@ -125,7 +125,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
       // do nothing
     }
 
-    console.log("dishTotalPrice: "+dishTotalPrice);
+    // console.log("dishTotalPrice: "+dishTotalPrice);
     return dishTotalPrice;
   }
 
@@ -150,8 +150,11 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
   var menuCookie = $cookieStore.get('menuCookie');  // save dish id only
 
   if(menuCookie){
-    for(key in menuCookie){
-      var dishID = menuCookie[key];
+    var oldMenuCookie = menuCookie;
+    menuCookie = [];  // empty menuCookie
+
+    for(key in oldMenuCookie){
+      var dishID = oldMenuCookie[key];
 
       // get dish from server
       var self = this;
