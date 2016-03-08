@@ -17,12 +17,20 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
     else{
       numberOfGuests = num;
     }
-	$cookieStore = num;
-	console.log("$cookieStore: "+$cookieStore)
+
+    // save to cookie
+	  $cookieStore.put('numberOfGuests', numberOfGuests);
   }
 
   this.getNumberOfGuests = function() {
-    return numberOfGuests;
+    // Get from Cookie
+    var numberOfGuestsInCookie = $cookieStore.get('numberOfGuests');
+
+    if(numberOfGuestsInCookie){
+      return numberOfGuestsInCookie;
+    }else{
+      return numberOfGuests;
+    }
   }
 
   // TODO in Lab 5: Add your model code from previous labs
