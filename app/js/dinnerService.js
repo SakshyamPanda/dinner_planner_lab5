@@ -51,6 +51,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
 
     menu.push(newDish);
     menuCookie.push(newDish.RecipeID);
+    console.log("addDishToMenu: menuCookie: "+menuCookie);
 
     // save dish id in the menu into cookie
     $cookieStore.put('menuCookie', menuCookie);
@@ -72,6 +73,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
 
     // save dish id in the menu into cookie
     $cookieStore.put('menuCookie', menuCookie);
+    console.log("removeDishFromMenu: menuCookie: "+menuCookie);
   }
 
   this.setPendingDish = function(dish){
