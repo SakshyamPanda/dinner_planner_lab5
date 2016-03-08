@@ -116,7 +116,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
         for(key in allIngredients){
           // console.log("ingredient: "+allIngredients[key]);
           // console.log("ingredient.Quantity: "+allIngredients[key].Quantity);
-          dishTotalPrice += Number(allIngredients[key].Quantity) * 1 * numberOfGuests;
+          dishTotalPrice += Number(allIngredients[key].Quantity).toPrecision(2) * 1 * numberOfGuests;
         }
       }else{
         // do nothing

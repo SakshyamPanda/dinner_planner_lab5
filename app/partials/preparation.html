@@ -1,30 +1,36 @@
-<div class="panel panel-default">
-	<div class="panel-body">
-		<h3>My Dinner: {{getNumberOfGuests()}} People</h3>
-		<button class="btn btn-default" type="button" ng-click="go('/search')">
-			Go back and edit dinner
-		</button>
-	</div>
-	<div class="panel-body">
-		<h1> Dinner Preparation</h1>
-		<div ng-repeat="dish in menu">
-			<div class="col-md-12">
-				<div class="col-md-3 thumb">
-					<a class="thumbnail">
-						<img class="img-responsive center-block imageheight" ng-src='{{dish.ImageURL}}'>
-					</a>
-				</div>
-				<div class="col-md-3">
-					<h3>{{dish.Title}}</h3>
-					<div class="col-md-12">
-						<span>{{dish.Description}}</span>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<h3>Instructions</h3>
-					<span>{{dish.Instructions}}</span>
-				</div>
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h3>
+					<span class="col-md-4 col-sm-5">Dinner Menu: {{getNumberOfGuests()}} People</span>
+					<span class="col-md-1 col-md-offset-6">
+					<button class="btn btn-primary" type="button" ng-click="go('/search')">
+						Edit dinner
+					</button>
+					</span>
+				</h3>
 			</div>
 		</div>
 	</div>
-</div>
+
+	<div class="col-md-12 col-sm-12">
+		<h2> Dinner Preparation</h2>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div ng-repeat="dish in menu">
+						<div class="col-md-12 parapadding col-sm-12">
+							<h3>{{dish.Title}}</h3>
+							<div class="col-md-4 thumb col-sm-5">
+								<a class="thumbnail">
+									<img class="imagecss" style="height:200px;" ng-src='{{dish.ImageURL}}'>
+								</a>
+							</div>
+							<div class="col-md-8 col-sm-7">
+								<h3>Instructions</h3>
+								<span>{{dish.Instructions}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
