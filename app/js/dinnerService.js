@@ -29,6 +29,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   // a bit to take the advantage of Angular resource service
   // check lab 5 instructions for details
   this.getDinnerMenu = function() {
+    console.log("getDinnerMenu: "+menu);
     return menu;
   }
 
@@ -48,9 +49,9 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
   this.removeDishFromMenu = function(dish) {
     for (key in menu){
-      var dish = menu[key];
+      var existedDish = menu[key];
 
-      if(dish.RecipeID == id){
+      if(existedDish.RecipeID == dish.RecipeID){
         menu.splice(key, 1);
         break;
       }
@@ -58,6 +59,18 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
         // do nothing
       }
     }
+  }
+
+  this.setPendingDish = function(dish){
+      console.log("setPendingDish");
+      console.log(dish);
+      pendingDish = dish;
+  }
+
+  this.getPendingDish = function(){
+    console.log("getPendingDish");
+    console.log(pendingDish);
+    return pendingDish;
   }
 
   this.getTotalMenuPrice = function() {

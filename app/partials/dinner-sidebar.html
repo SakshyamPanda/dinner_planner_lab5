@@ -7,7 +7,7 @@
 					People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuests(numberOfGuests)"/>
 				</div>
 				<div>
-					Total number of guest: {{getNumberOfGuests()}}
+					Total number of guests: {{getNumberOfGuests()}}
 				</div>
 
 				<hr/>
@@ -24,15 +24,15 @@
 						<tr ng-repeat="dish in menu">
 							<td>{{dish.Title}}</td>
 		    				<td>{{getDishTotalPrice(dish)}} SEK</td>
-							<td><span class=\"glyphicon glyphicon-remove removeDish\" id=""></td>
+							<td><span class="glyphicon glyphicon-remove removeDish" ng-click="removeDishFromMenu(dish)"></td>
 						</tr>
 						<tr>
 						  <td>Pending</td>
-						  <td>{{getDishTotalPrice(pendingDish)}} SEK</td>
+						  <td>{{getDishTotalPrice(pendingDish())}} SEK</td>
 						</tr>
 						<tr>
 						  <td>Total</td>
-						  <td>{{getTotalMenuPrice() + getDishTotalPrice(pendingDish)}} SEK</td>
+						  <td>{{getTotalMenuPrice() + getDishTotalPrice(pendingDish())}} SEK</td>
 						</tr>
 					</tbody>
 				</table>
