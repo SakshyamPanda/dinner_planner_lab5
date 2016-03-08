@@ -5,10 +5,11 @@
 // the next time.
 dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
   
-  var numberOfGuests = 2;
-  var menu = [];
-  var pendingDish = {};
+  var BIGOVEN_API_KEY = "0OV23011kU7B3VVVgxTTTIfdNXeTI3us";
 
+  var numberOfGuests = 2;
+  var menu = [];  // save the whole dish object
+  var pendingDish = {};
 
   this.setNumberOfGuests = function(num) {
     if(num < 1){
@@ -17,8 +18,9 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
     else{
       numberOfGuests = num;
     }
-	$cookieStore = num;
-	console.log("$cookieStore: "+$cookieStore)
+
+    // save to cookie
+	  $cookieStore.put('numberOfGuests', numberOfGuests);
   }
 
   this.getNumberOfGuests = function() {
@@ -41,12 +43,18 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
     for(key in menu){
       if(menu[key].Category === newDish.Category){
         menu.splice(key, 1);
+        menuCookie.splice(key, 1);
       }else{
         // do nothing
       }
     }
 
     menu.push(newDish);
+    menuCookie.push(newDish.RecipeID);
+    console.log("addDishToMenu: menuCookie: "+menuCookie);
+
+    // save dish id in the menu into cookie
+    $cookieStore.put('menuCookie', menuCookie);
   }
 
   this.removeDishFromMenu = function(dish) {
@@ -55,23 +63,28 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
 
       if(existedDish.RecipeID == dish.RecipeID){
         menu.splice(key, 1);
+        menuCookie.splice(key, 1);
         break;
       }
       else{
         // do nothing
       }
     }
+
+    // save dish id in the menu into cookie
+    $cookieStore.put('menuCookie', menuCookie);
+    console.log("removeDishFromMenu: menuCookie: "+menuCookie);
   }
 
   this.setPendingDish = function(dish){
-      console.log("setPendingDish");
-      console.log(dish);
+      // console.log("setPendingDish");
+      // console.log(dish);
       pendingDish = dish;
   }
 
   this.getPendingDish = function(){
-    console.log("getPendingDish");
-    console.log(pendingDish);
+    // console.log("getPendingDish");
+    // console.log(pendingDish);
     return pendingDish;
   }
 
@@ -81,7 +94,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
 
     for(key in menu){
       var dish = menu[key];
-      console.log("getTotalMenuPrice id: "+dish);
+      // console.log("getTotalMenuPrice id: "+dish);
 
       var thisDishPrice = this.getDishTotalPrice(dish);
       totalMenuPrice += thisDishPrice;
@@ -98,13 +111,12 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
     if(dish){
       if(dish.Ingredients){
         var allIngredients = dish.Ingredients;
-        console.log("allIngredients: "+allIngredients);
+        // console.log("allIngredients: "+allIngredients);
 
         for(key in allIngredients){
-          console.log("ingredient: "+allIngredients[key]);
-          console.log("ingredient.Quantity: "+allIngredients[key].Quantity);
-          dishTotalPrice += Number(allIngredients[key].Quantity)* 1 * numberOfGuests;
-          console.log("dishTotalPrice: "+dishTotalPrice);
+          // console.log("ingredient: "+allIngredients[key]);
+          // console.log("ingredient.Quantity: "+allIngredients[key].Quantity);
+          dishTotalPrice += Number(allIngredients[key].Quantity) * 1 * numberOfGuests;
         }
       }else{
         // do nothing
@@ -113,18 +125,49 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
       // do nothing
     }
 
+    // console.log("dishTotalPrice: "+dishTotalPrice);
     return dishTotalPrice;
   }
 
+
+  // Get data by sending request to server via API
   // getAllDishes
-	this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'r02x0R09O76JMCMc4nuM0PJXawUHpBUL'});
+  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:BIGOVEN_API_KEY});
 
   // getDish
-	this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'r02x0R09O76JMCMc4nuM0PJXawUHpBUL'}); 
+  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:BIGOVEN_API_KEY}); 
 
-	//console.log(DishSearch);
+  // load the values from the cookie store the first time 
+  // you create the variables that store your number of guest and menu
+  var numberOfGuestsInCookie = $cookieStore.get('numberOfGuests');
+
+  if(numberOfGuestsInCookie){
+      numberOfGuests = numberOfGuestsInCookie;
+  }else{
+      // do nothing
+  }
+  
+  var menuCookie = $cookieStore.get('menuCookie');  // save dish id only
+
+  if(menuCookie){
+    var oldMenuCookie = menuCookie;
+    menuCookie = [];  // empty menuCookie
+
+    for(key in oldMenuCookie){
+      var dishID = oldMenuCookie[key];
+
+      // get dish from server
+      var self = this;
+      this.Dish.get( {id:dishID} ,function(data){
+        self.addDishToMenu(data);
+      },function(data){
+        // do nothing if error
+      });
+    }
+  }else{
+    menuCookie = [];
+  }
 	
-
   // Angular service needs to return an object that has all the
   // methods created in it. You can consider that this is instead
   // of calling var model = new DinnerModel() we did in the previous labs
