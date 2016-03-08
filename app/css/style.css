@@ -1,21 +1,19 @@
-body{
-	margin-bottom: 60px;
-	width:100%;
-	height:100%;
-}
-
 .landingimage {
     display:block;
     position:absolute;
     background:url(../images/family_dinner.jpg);
     background-repeat:no-repeat;
-    background-size: 100% 100%;
+    background-size: cover;
     width:100%;
     height:100%;
-	bottom: 0;
+    bottom:0;
+    right:0;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 }
 
-/*.header1{
+.header1{
 	position: absolute;
     width: 100%;
 	background-color: rgba(255, 235, 182, 0.7);
@@ -25,14 +23,14 @@ body{
 	padding-bottom: 1%;
 	color: black;
 	
-}*/
+}
 .headersection{
 	/*width:100%; */
 	background-color: rgb(255,235,182);
 	padding-bottom: 1%;
 	border-bottom: 3px solid #999;
 }
-/*.textBox{
+.textBox{
 	position: absolute;
 	top: 10%;
 	left: 5%;
@@ -43,7 +41,7 @@ body{
 	background-color: rgba(255, 255, 255, 0.7);
 	padding:1%;
 }
-*/
+
 .parapadding{
 	padding-bottom: 20px;
 }
@@ -53,9 +51,8 @@ body{
 	/*border-bottom: 3px solid #999;*/
 }
 
-.imageheight{
-	/*min-height: 200px;*/
-	max-height: 150px;
+.imagecss{
+	height:200px;
 }
 
 .displayedDish{
@@ -76,11 +73,10 @@ body{
                 no-repeat;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #555;
+.headername{
+	font-size: 3.8vw;
+}
+
+.headerdescription{
+	font-size: 2vw;
 }
