@@ -1,7 +1,7 @@
 
 .headersection{
 	/*width:100%; */
-	background-color: rgb(255,235,182);
+	background-color: #eee;
 	border-bottom: 3px solid #999;
 	margin-bottom: 0.5%;
 	opacity: 0.5;
@@ -9,7 +9,7 @@
 
 .header{
 	/*width:100%; */
-	background-color: rgb(255,235,182);
+	background-color: #aaaaaa;
 }
 
 .parapadding{

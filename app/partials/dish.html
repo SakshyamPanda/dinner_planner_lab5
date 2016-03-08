@@ -5,8 +5,8 @@
 Instructions, Ingredients and total cost. -->
 <div class="col-md-9">
 	<div class="panel panel-default">
-		<div class="btn-group">
-			<button class="btn btn-default" type="button" ng-click="backToSelectDish()">
+		<div class="btn-group pull-right">
+			<button class="btn btn-primary" type="button" ng-click="backToSelectDish()">
 				Back to Select Dish
 			</button>
 		</div>
@@ -35,18 +35,18 @@ Instructions, Ingredients and total cost. -->
 						</tr>
 					</table>
 					<div>
-						<div class="col-md-8 col-sm-8">
-							<div class="btn-group">
-								<button class="btn btn-default" type="button" ng-click="confirmDish(dish)">
-									Confirm Dish
-								</button>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-4">
+						<div class="col-md-4 col-md-offset-5 col-sm-4">
 							<span class="pull-right">
 								<h4>Price: {{getDishTotalPrice(dish)}}</h4>
 							</span>
 						</div>
+						<div class="col-md-3 col-sm-8">
+							<div class="btn-group pull-right">
+								<button class="btn btn-success" type="button" ng-click="confirmDish(dish)">
+									Confirm Dish
+								</button>
+							</div>
+						</div> 
 					</div>
 				</div>
 			</div>
