@@ -10,7 +10,7 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
 
     Dinner.DishSearch.get({title_kw:query},function(data){
       $scope.dishes=data.Results;
-  	  console.log($scope.dishes);
+  	  // console.log($scope.dishes);
 
       $scope.status = "Showing " + data.Results.length + " results";
 

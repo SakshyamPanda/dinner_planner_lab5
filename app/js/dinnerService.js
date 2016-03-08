@@ -75,14 +75,14 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
   }
 
   this.setPendingDish = function(dish){
-      console.log("setPendingDish");
-      console.log(dish);
+      // console.log("setPendingDish");
+      // console.log(dish);
       pendingDish = dish;
   }
 
   this.getPendingDish = function(){
-    console.log("getPendingDish");
-    console.log(pendingDish);
+    // console.log("getPendingDish");
+    // console.log(pendingDish);
     return pendingDish;
   }
 
@@ -92,7 +92,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
 
     for(key in menu){
       var dish = menu[key];
-      console.log("getTotalMenuPrice id: "+dish);
+      // console.log("getTotalMenuPrice id: "+dish);
 
       var thisDishPrice = this.getDishTotalPrice(dish);
       totalMenuPrice += thisDishPrice;
@@ -109,11 +109,11 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
     if(dish){
       if(dish.Ingredients){
         var allIngredients = dish.Ingredients;
-        console.log("allIngredients: "+allIngredients);
+        // console.log("allIngredients: "+allIngredients);
 
         for(key in allIngredients){
-          console.log("ingredient: "+allIngredients[key]);
-          console.log("ingredient.Quantity: "+allIngredients[key].Quantity);
+          // console.log("ingredient: "+allIngredients[key]);
+          // console.log("ingredient.Quantity: "+allIngredients[key].Quantity);
           dishTotalPrice += Number(allIngredients[key].Quantity)* 1 * numberOfGuests;
           console.log("dishTotalPrice: "+dishTotalPrice);
         }
