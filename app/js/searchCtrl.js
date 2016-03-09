@@ -17,8 +17,16 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
           // do nothing
         }
       },function(data){
-        $scope.status = "There was an error.";
-    });
+			console.log(data.status);
+			  
+			if(data.status == -1)
+			{
+				$scope.status = "Please check your internet connection.";  
+			}
+			else{
+				$scope.status = "There was an error.";
+			}
+        });
   });
   
   $scope.search = function(query) {
