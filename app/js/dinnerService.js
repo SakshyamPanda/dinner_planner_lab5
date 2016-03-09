@@ -5,7 +5,7 @@
 // the next time.
 dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
   
-  var BIGOVEN_API_KEY = "0OV23011kU7B3VVVgxTTTIfdNXeTI3us";
+  var BIGOVEN_API_KEY = "sV1fPGQKrO0b6oUYb6w9kLI8BORLiWox";
 
   var numberOfGuests = 2;
   var menu = [];  // save the whole dish object
